@@ -67,8 +67,15 @@ void dealloc(Node* head)
 //   function object struct declarations
 // -----------------------------------------------
 
+Node* createNode(int val) {
+    return new Node{val, nullptr};
+}
 
-
+struct comp_ {
+    bool operator()(int val) const {
+        return (val % 2 == 0);
+    }
+};
 
 
 int main(int argc, char* argv[])
@@ -85,7 +92,26 @@ int main(int argc, char* argv[])
     cout << "Original list: ";
     print(head);
 
-    // Test out your linked list code
+    int pivot = 9;
+
+    // Initialize smaller and larger lists
+    Node* smaller = nullptr;
+    Node* larger = nullptr;
+    
+    comp_ comparison;
+    Node* new_ = llfilter(head, comparison);
+    std::cout << "Filter out even: ";
+    print(new_);
+
+    // Call llpivot
+    llpivot(head, smaller, larger, pivot);
+
+    // Print the results
+    std::cout << "Smaller or equal to pivot: ";
+    print(smaller);
+
+    std::cout << "Larger than pivot: ";
+    print(larger);
 
 
 
