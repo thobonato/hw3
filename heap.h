@@ -80,6 +80,9 @@ Heap<T, Comparator>::~Heap(){}
 template <typename T, typename Comparator>
 bool Heap<T, Comparator>::empty() const { return heap_.size() < 1; }
 
+template <typename T, typename Comparator>
+size_t Heap<T, Comparator>::size() const { return heap_.size();}
+
 
 template <typename T, typename Comparator>
 void Heap<T,Comparator>::push(const T& item) {

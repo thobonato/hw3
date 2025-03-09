@@ -14,11 +14,15 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot){
         return;
     }
     else if(head->val <= pivot){ // smaller than or eq to pivot
+        Node* tmp = head->next;
         smaller = head;
-        llpivot(head->next, smaller->next, larger, pivot);
+        head = nullptr;
+        llpivot(tmp, smaller->next, larger, pivot);
     }
     else{
+        Node* tmp = head->next;
         larger = head;
-        llpivot(head->next, smaller, larger->next, pivot);
+        head = nullptr;
+        llpivot(tmp, smaller, larger->next, pivot);
     }
 }
