@@ -73,6 +73,14 @@ private:
 template <typename T, typename Comparator>
 Heap<T,Comparator>::Heap(int m, Comparator c) : m_(m), comp_(c), heap_() {}
 
+// destructor
+template <typename T, typename Comparator>
+Heap<T, Comparator>::~Heap(){}
+
+template <typename T, typename Comparator>
+bool Heap<T, Comparator>::empty() const { return heap_.size() < 1; }
+
+
 template <typename T, typename Comparator>
 void Heap<T,Comparator>::push(const T& item) {
   
@@ -94,6 +102,7 @@ void Heap<T,Comparator>::push(const T& item) {
     }
   }
 }
+
 
 // We will start top() for you to handle the case of 
 // calling top on an empty heap
