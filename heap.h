@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <vector>
 
-template <typename T, typename PComparator = std::less<T>>
+template <typename T, typename PComparator = std::less<T> >
 class Heap
 {
 public:
@@ -150,19 +150,21 @@ void Heap<T,PComparator>::pop()
       break;
     }
 
-
     for (size_t j = 2; j <= m_; j++){
       int childId = m_ * i + j;
       // check if better than bestChild
-      if(childId < heap_.size() && comp_(heap_[childId], heap_[bestChild])){
+      if (childId >= heap_.size()){
+        break;
+      }
+      if(comp_(heap_[childId], heap_[bestChild])){
         bestChild = childId;
       }
     }
 
     // with best child, now swap if child is better
     // check if better than bestChild
-    if(comp_(heap_[i], heap_[bestChild])){
-      std::swap(heap_[i], heap_[bestChild]);
+    if(comp_(heap_[bestChild], heap_[i])){
+      std::swap(heap_[bestChild], heap_[i]);
       i = bestChild;
     } else {
       break;
