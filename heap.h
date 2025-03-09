@@ -2,6 +2,7 @@
 #define HEAP_H
 #include <functional>
 #include <stdexcept>
+#include <vector>
 
 template <typename T, typename PComparator = std::less<T>>
 class Heap
@@ -70,7 +71,7 @@ private:
 
 // constructor
 template <typename T, typename Comparator>
-Heap<T,Comparator>::Heap(int m, Comparator c) : m_(m), comp_(c){}
+Heap<T,Comparator>::Heap(int m, Comparator c) : m_(m), comp_(c), heap_() {}
 
 template <typename T, typename Comparator>
 void Heap<T,Comparator>::push(const T& item) {
