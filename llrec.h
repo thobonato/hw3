@@ -5,7 +5,6 @@
 #endif
 
 
-#include <iostream>
 /**
  * Node struct for both problems
  */
